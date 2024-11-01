@@ -93,5 +93,7 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-// Initial setup to display the correct deck and slide
-updateDisplay();
+// Attach click events to buttons for navigation
+document.getElementById("next-slide").addEventListener("click", goToNextSlide);
+document.getElementById("previous-slide").addEventListener("click", goToPreviousSlide);
+document.getElementById("next-deck").addEventListener("click", go
