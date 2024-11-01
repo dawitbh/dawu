@@ -4,33 +4,33 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', sans-serif;
-    color: #4A4A4A;
+    color: #bd3c3c;
 }
 
-html, body {
+ html, body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    background-color: #f0f0f0;
+    position: relative;
+    background-color: #b7b7b7; /* Light background */
 }
 
-/* Header and Footer Styling */
-header {
+header, footer {
     position: absolute;
     left: 0;
     width: 100vw;
-    height: 60px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0 5vw;
-    background-color: #2C3E50;
-    color: #ECF0F1;
-    z-index: 10;
+    z-index: 9;
+    background-color: #3E3A39; /* Dark background for contrast */
+    color: #c6a02b; /* Light text color */
 }
 
-header span {
-    font-size: 24px;
+ header span, footer h1, footer span {
+    color: #ffffff8d; 
 }
 
 nav {
