@@ -19,28 +19,27 @@ nav button {
 main {
     position: relative;
     height: 100vh;
-    overflow: hidden;
+    overflow: hidden; /* Keep this to prevent overflowing elements */
 }
 
 section {
-    display: none;
+    display: flex; /* Change from display: none; */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text */
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    display: flex; /* Changed from display: none; */
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Center text */
-    opacity: 0;
+    opacity: 0; /* Start invisible */
     transition: opacity 0.5s ease;
     padding: 20px; /* Added padding for better spacing */
+    overflow: auto; /* Allows scrolling for long text */
 }
 
 section.active {
-    display: flex; /* Remain as flex */
-    opacity: 1;
+    opacity: 1; /* Show only active slides */
 }
 
 footer {
