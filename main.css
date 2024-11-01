@@ -1,118 +1,50 @@
-/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f9f9f9; /* Light background for better contrast */
-    padding: 20px; /* Space around the content */
+    margin: 0;
+    padding: 0;
 }
 
-/* Header styles */
 header {
-    background: #007BFF; /* Primary color */
-    color: white;
-    padding: 10px 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: space-between; /* Space between elements */
-    border-radius: 5px; /* Rounded corners */
+    padding: 10px;
+    background-color: #f0f0f0;
 }
 
-header nav {
-    display: flex;
-    gap: 10px; /* Space between buttons */
+nav button {
+    margin: 0 5px;
 }
 
-header button {
-    background: white;
-    color: #007BFF;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s, color 0.3s; /* Smooth transition */
-}
-
-header button:hover {
-    background: #0056b3; /* Darker shade on hover */
-    color: white;
-}
-
-/* Main content styles */
 main {
-    margin-top: 20px;
+    position: relative;
+    height: 100vh;
+    overflow: hidden; /* Hide overflow */
 }
 
 section {
-    margin-bottom: 20px; /* Space between sections */
-    padding: 15px; /* Padding within each section */
-    background: white; /* White background for sections */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 5px; /* Rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    display: none; /* Hide all sections */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Fade effect */
 }
 
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 10px; /* Space below heading */
-    color: #007BFF; /* Primary color */
+section.active {
+    display: flex; /* Show active section */
+    opacity: 1; /* Fully visible */
 }
 
-h2 {
-    font-size: 1.5em;
-    margin-bottom: 10px; /* Space below heading */
-    color: #0056b3; /* Darker shade for subheadings */
-}
-
-ul {
-    list-style-type: disc;
-    padding-left: 20px; /* Space for bullet points */
-}
-
-blockquote {
-    font-style: italic;
-    color: #555; /* Dark gray for quotes */
-    margin: 10px 0; /* Space around quotes */
-    padding-left: 15px; /* Indent quotes */
-    border-left: 3px solid #007BFF; /* Left border for quotes */
-}
-
-/* Footer styles */
 footer {
-    margin-top: 20px;
-    padding: 10px 0; /* Padding for footer */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     text-align: center;
-    border-top: 1px solid #ddd; /* Top border */
-}
-
-footer span {
-    display: block; /* Stack footer content */
-    color: #555; /* Dark gray text */
-}
-
-/* Media queries for responsiveness */
-@media (max-width: 600px) {
-    header {
-        flex-direction: column; /* Stack header elements */
-        align-items: flex-start; /* Align to the start */
-    }
-
-    header nav {
-        margin-top: 10px; /* Space above navigation */
-        flex-direction: column; /* Stack buttons vertically */
-    }
-
-    header button {
-        width: 100%; /* Full width buttons on small screens */
-    }
-
-    section {
-        padding: 10px; /* Less padding on small screens */
-    }
+    background-color: #f0f0f0;
 }
