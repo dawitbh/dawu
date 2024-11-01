@@ -3,10 +3,11 @@ const sections = mains.map((main) => Array.from(main.querySelectorAll("section")
 let currentSlideIndex = 0;
 let currentDeckIndex = 0;
 
-document.getElementById("next-slide").addEventListener("click", handleNextSlide);
-document.getElementById("previous-slide").addEventListener("click", handlePreviousSlide);
-document.getElementById("next-deck").addEventListener("click", handleNextDeck);
-document.getElementById("previous-deck").addEventListener("click", handlePreviousDeck);
+document.getElementById("next-slide").addEventListener("click", debounce(handleNextSlide));
+document.getElementById("previous-slide").addEventListener("click", debounce(handlePreviousSlide));
+document.getElementById("next-deck").addEventListener("click", debounce(handleNextDeck));
+document.getElementById("previous-deck").addEventListener("click", debounce(handlePreviousDeck));
+window.addEventListener("resize", slideToCurrent);
 
 function refreshUI(deckChanged = true) {
   if (deckChanged) switchDeck();
@@ -15,8 +16,10 @@ function refreshUI(deckChanged = true) {
 }
 
 function switchDeck() {
-  mains.forEach((main) => (main.style.display = "none"));
-  mains[currentDeckIndex].style.display = "flex";
+  mains.forEach((main, index) => {
+    main.style.visibility = index === currentDeckIndex ? "visible" : "hidden";
+    main.style.position = index === currentDeckIndex ? "relative" : "absolute";
+  });
 }
 
 function slideToCurrent() {
@@ -95,6 +98,15 @@ function moveToPreviousDeck() {
     currentDeckIndex--;
     currentSlideIndex = 0;
   }
+}
+
+// Debounce function to prevent rapid clicks
+function debounce(func, delay = 300) {
+  let timeout;
+  return function (...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
 }
 
 refreshUI();
