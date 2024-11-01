@@ -20,6 +20,11 @@ nav button {
     position: relative;
     height: 100vh;
     overflow: hidden;
+    display: none; /* Hide all decks initially */
+}
+
+.deck.active {
+    display: block; /* Show the active deck */
 }
 
 .slide {
@@ -29,17 +34,17 @@ nav button {
     height: 100%;
     top: 0;
     left: 0;
-    display: flex; /* Changed from display: none; */
+    display: flex; /* Ensure flex layout */
     justify-content: center;
     align-items: center;
     text-align: center; /* Center text */
     opacity: 0;
     transition: opacity 0.5s ease;
-    padding: 20px; /* Added padding for better spacing */
+    padding: 20px; /* Add padding for better spacing */
 }
 
 .slide.active {
-    display: flex; /* Remain as flex */
+    display: flex; /* Keep the active slide visible */
     opacity: 1;
 }
 
