@@ -11,34 +11,124 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  position: relative;
-  background-color: #e0e7ff; /* Changed background color */
+  background-color: #e0e7ff; /* Light background */
 }
 
-/* Header and Footer */
-header, footer {
-  position: absolute;
+/* Header */
+header {
+  position: fixed; /* Fixed position for the header */
   left: 0;
   width: 100vw;
-  height: 60px; /* Increased height for better visibility */
+  height: 60px; /* Header height */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 20px; /* Increased padding */
   z-index: 9;
-  background-color: #4a90e2; /* Changed background color to a shade of blue */
+  background-color: #4a90e2; /* Blue background */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 20px 20px; /* Rounded corners at the bottom */
 }
 
 header span {
-  font-size: 28px; /* Increased font size */
+  font-size: 28px; /* Header text size */
   font-weight: bold;
-  color: white; /* Changed text color to white for contrast */
+  color: white; /* Header text color */
 }
 
+/* Footer */
 footer {
-  bottom: 20px; 
+  position: fixed; /* Fixed position for the footer */
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px; /* Footer height */
   background: linear-gradient(180deg, #4a90e2, #3f68b4); /* Gradient for footer */
   padding: 10px 20px; /* Increased padding */
-  bo
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+
+footer h1 {
+  font-size: 30px; /* Footer text size */
+  margin: 0;
+  color: white; /* Footer text color */
+  letter-spacing: 1px; 
+}
+
+/* Main Content */
+main {
+  display: flex;
+  flex-direction: column; /* Stack sections vertically */
+  height: calc(100vh - 120px); /* Space for header and footer */
+  overflow: hidden;
+  transition: transform 0.5s ease;
+  background-color: white; /* Main area background */
+  margin-top: 60px; /* Space below header */
+  margin-bottom: 60px; /* Space above footer */
+}
+
+/* Sections */
+section {
+  height: 100%; /* Sections take full height of main */
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 0 10vw; /* Horizontal padding */
+  text-align: center; 
+}
+
+h1 {
+  font-size: 72px; /* Main header size */
+}
+
+h2 {
+  font-size: 48px; /* Subheader size */
+  color: #555; 
+}
+
+li {
+  font-size: 36px; /* List item size */
+  margin: 18px 0;
+  color: #333A3F;
+}
+
+ul {
+  list-style-type: none; /* No bullet points */
+  padding: 0;
+}
+
+h1, h2 {
+  margin: 28px 0; /* Margin for headers */
+}
+
+/* Navigation */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; 
+  gap: 15px; 
+}
+
+nav button {
+  all: unset;
+  width: 90px; /* Button width */
+  height: 34px; /* Button height */
+  font-size: 16px; /* Button font size */
+  background: transparent;
+  border: none;
+  position: relative;
+  color: white; /* Button text color */
+  cursor: pointer;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
