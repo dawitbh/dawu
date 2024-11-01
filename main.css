@@ -29,14 +29,16 @@ section {
     height: 100%;
     top: 0;
     left: 0;
+    display: flex; /* Changed from display: none; */
     justify-content: center;
     align-items: center;
+    text-align: center; /* Center text */
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
 section.active {
-    display: flex;
+    display: flex; /* Remain as flex */
     opacity: 1;
 }
 
@@ -47,4 +49,5 @@ footer {
     width: 100%;
     text-align: center;
     background-color: #f0f0f0;
+    padding: 10px 0; /* Add some padding for footer */
 }
