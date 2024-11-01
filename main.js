@@ -16,12 +16,12 @@ function refreshUI(deckChanged = true) {
 
 function switchDeck() {
   mains.forEach((main) => (main.style.display = "none"));
-  mains[currentDeckIndex].style.display = "flex";
+  mains[currentDeckIndex].style.display = "flex"; // Show the current deck
 }
 
 function slideToCurrent() {
-  const translateValue = currentSlideIndex * -window.innerWidth;
-  mains[currentDeckIndex].style.transform = `translateX(${translateValue}px)`;
+  const translateValue = currentSlideIndex * -100; // Use percentage for better responsiveness
+  mains[currentDeckIndex].style.transform = `translateX(${translateValue}%)`;
 }
 
 function updateDisplayCounters() {
@@ -42,15 +42,15 @@ function updateDeckCounter() {
 function handleNextSlide() {
   if (hasNextSlide()) {
     currentSlideIndex++;
+    refreshUI(false);
   }
-  refreshUI(false);
 }
 
 function handlePreviousSlide() {
   if (hasPreviousSlide()) {
     currentSlideIndex--;
+    refreshUI(false);
   }
-  refreshUI(false);
 }
 
 function handleNextDeck() {
@@ -86,15 +86,4 @@ function hasPreviousDeck() {
 function moveToNextDeck() {
   if (hasNextDeck()) {
     currentDeckIndex++;
-    currentSlideIndex = 0;
-  }
-}
-
-function moveToPreviousDeck() {
-  if (hasPreviousDeck()) {
-    currentDeckIndex--;
-    currentSlideIndex = 0;
-  }
-}
-
-refreshUI();
+    currentSlideIndex =
