@@ -16,30 +16,31 @@ nav button {
     margin: 0 5px;
 }
 
-main {
+.deck {
     position: relative;
     height: 100vh;
-    overflow: hidden; /* Keep this to prevent overflowing elements */
+    overflow: hidden;
 }
 
-section {
-    display: flex; /* Change from display: none; */
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Center text */
+.slide {
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    opacity: 0; /* Start invisible */
+    display: flex; /* Changed from display: none; */
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center text */
+    opacity: 0;
     transition: opacity 0.5s ease;
     padding: 20px; /* Added padding for better spacing */
-    overflow: auto; /* Allows scrolling for long text */
 }
 
-section.active {
-    opacity: 1; /* Show only active slides */
+.slide.active {
+    display: flex; /* Remain as flex */
+    opacity: 1;
 }
 
 footer {
