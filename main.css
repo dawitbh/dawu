@@ -35,6 +35,7 @@ section {
     text-align: center; /* Center text */
     opacity: 0;
     transition: opacity 0.5s ease;
+    padding: 20px; /* Added padding for better spacing */
 }
 
 section.active {
@@ -50,4 +51,5 @@ footer {
     text-align: center;
     background-color: #f0f0f0;
     padding: 10px 0; /* Add some padding for footer */
+    font-weight: bold; /* Emphasize footer text */
 }
