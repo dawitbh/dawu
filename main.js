@@ -1,37 +1,71 @@
-const slides = document.querySelectorAll('main > section');
+const decks = document.querySelectorAll('.deck');
+let currentDeck = 0;
 let currentSlide = 0;
 
-// Function to show the selected slide
-function showSlide(index) {
-    slides.forEach((slide, i) => {
-        slide.classList.remove('active');
-        if (i === index) {
-            slide.classList.add('active');
+// Function to show the current deck and slide
+function showDeckAndSlide(deckIndex, slideIndex) {
+    decks.forEach((deck, dIndex) => {
+        deck.classList.remove('active');
+        if (dIndex === deckIndex) {
+            deck.classList.add('active');
+            const slides = deck.querySelectorAll('.slide');
+            slides.forEach((slide, sIndex) => {
+                slide.classList.remove('active');
+                if (sIndex === slideIndex) {
+                    slide.classList.add('active');
+                }
+            });
         }
     });
-    updateSlideCount();
+    updateCounts();
 }
 
-// Function to go to the next slide
+// Functions to navigate slides within the current deck
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
+    const slides = decks[currentDeck].querySelectorAll('.slide');
+    if (currentSlide < slides.length - 1) {
+        currentSlide++;
+        showDeckAndSlide(currentDeck, currentSlide);
+    }
 }
 
-// Function to go to the previous slide
 function previousSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    showSlide(currentSlide);
+    if (currentSlide > 0) {
+        currentSlide--;
+        showDeckAndSlide(currentDeck, currentSlide);
+    }
 }
 
-// Update slide count display
-function updateSlideCount() {
-    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${slides.length}`;
+// Functions to navigate between decks
+function nextDeck() {
+    if (currentDeck < decks.length - 1) {
+        currentDeck++;
+        currentSlide = 0; // Reset slide to the first slide of the new deck
+        showDeckAndSlide(currentDeck, currentSlide);
+    }
 }
 
-// Set initial slide
-showSlide(currentSlide);
+function previousDeck() {
+    if (currentDeck > 0) {
+        currentDeck--;
+        currentSlide = 0; // Reset slide to the first slide of the new deck
+        showDeckAndSlide(currentDeck, currentSlide);
+    }
+}
 
-// Event listeners for navigation buttons
+// Function to update display counts
+function updateCounts() {
+    document.getElementById('slide-count').textContent = `Slide ${currentSlide + 1} / ${decks[currentDeck].querySelectorAll('.slide').length}`;
+    document.getElementById('deck-count').textContent = `Deck ${currentDeck + 1} / ${decks.length}`;
+}
+
+// Event listeners for slide navigation
 document.getElementById('next-slide').addEventListener('click', nextSlide);
 document.getElementById('previous-slide').addEventListener('click', previousSlide);
+
+// Event listeners for deck navigation
+document.getElementById('next-deck').addEventListener('click', nextDeck);
+document.getElementById('previous-deck').addEventListener('click', previousDeck);
+
+// Initialize the first deck and slide
+showDeckAndSlide(currentDeck, currentSlide);
