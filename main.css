@@ -15,7 +15,7 @@ html, body {
 }
 
 /* Header and Footer Styling */
-header, footer {
+header {
     position: absolute;
     left: 0;
     width: 100vw;
@@ -29,20 +29,10 @@ header, footer {
     z-index: 10;
 }
 
-header span, footer h1, footer span {
-    color: #ffffff;
-}
-
 header span {
     font-size: 24px;
 }
 
-footer h1 {
-    font-size: 32px;
-    margin: 0;
-}
-
-/* Navigation Styling */
 nav {
     display: flex;
     gap: 20px;
