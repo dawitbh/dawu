@@ -1,37 +1,33 @@
-// Get elements
-const headerButton = document.getElementById('toggleHeader');
-const mainElements = document.querySelectorAll('main');
-const toggleSectionsButton = document.getElementById('toggleSections');
-const sections = document.querySelectorAll('section');
+const slides = document.querySelectorAll('main > section');
+let currentSlide = 0;
 
-// Initialize header visibility state
-let isHeaderVisible = true;
-let areSectionsVisible = true;
-
-// Function to toggle header visibility
-function toggleHeader() {
-    isHeaderVisible = !isHeaderVisible; // Toggle the state
-    const header = document.querySelector('header');
-
-    if (isHeaderVisible) {
-        header.style.display = 'flex'; // Show header
-    } else {
-        header.style.display = 'none'; // Hide header
-    }
-}
-
-// Function to toggle sections visibility
-function toggleSections() {
-    areSectionsVisible = !areSectionsVisible; // Toggle the state
-    sections.forEach(section => {
-        section.style.display = areSectionsVisible ? 'block' : 'none'; // Show or hide sections
+function showSlide(index) {
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        if (i === index) {
+            slide.classList.add('active');
+        }
     });
+    updateSlideCount();
 }
 
-// Event listeners
-headerButton.addEventListener('click', toggleHeader);
-toggleSectionsButton.addEventListener('click', toggleSections);
+function nextSlide() {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+}
 
-// Initialize the state based on default visibility
-if (!isHeaderVisible) toggleHeader();
-if (!areSectionsVisible) toggleSections();
+function previousSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+function updateSlideCount() {
+    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${slides.length}`;
+}
+
+// Set initial slide
+showSlide(currentSlide);
+
+// Event listeners for buttons
+document.getElementById('next-slide').addEventListener('click', nextSlide);
+document.getElementById('previous-slide').addEventListener('click', previousSlide);
