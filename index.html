@@ -1,50 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Contemporary Client Side</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap">
-    <link rel="stylesheet" href="./main.css">
-    <link rel="icon" type="image/svg+xml" href="/logo.svg">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Deck Example</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
 <header>
-    <span>Contemporary Client Side</span>
+    <span>My Presentation</span>
     <nav>
-        <button id="previous-slide">&lt;</button>
-        <span id="slide-count"></span>
-        <button id="next-slide">&gt;</button>
-        <button id="previous-deck">&lt;&lt;</button>
-        <span id="deck-count"></span>
-        <button id="next-deck">&gt;&gt;</button>
+        <button id="previous-deck">Previous Deck</button>
+        <button id="next-deck">Next Deck</button>
     </nav>
 </header>
+
 <main>
     <section>
-        <h2>Late 2024 Edition</h2>
-        <h1>Future Client Side</h1>
-        <h2>Around the world and back</h2>
+        <h1>Slide 1</h1>
+        <h2>Content for Slide 1</h2>
     </section>
     <section>
-        <h2>Who am I?</h2>
-        <ul>
-            <li>Father of three</li>
-            <li>World citizen</li>
-            <li>Better computer scientist</li>
-        </ul>
+        <h1>Slide 2</h1>
+        <h2>Content for Slide 2</h2>
     </section>
     <section>
-        <h2>What am I afraid of?</h2>
-        <ul>
-            <li>WWIII</li>
-            <li>AI Fever</li>
-            <li>Black Swan</li>
-        </ul>
+        <h1>Slide 3</h1>
+        <h2>Content for Slide 3</h2>
+    </section>
+</main>
+
+<main>
+    <section>
+        <h1>Deck 2 - Slide 1</h1>
+        <h2>Content for Slide 1 in Deck 2</h2>
     </section>
     <section>
-        <h2>Who are you?</h2>
-        <ul>
-            <li>Name &amp; Origin</li>
+        <h1>Deck 2 - Slide 2</h1>
+        <h2>Content for Slide 2 in Deck 2</h2>
+    </section>
+</main>
+
+<footer>
+    <h1 id="slide-count">Slide: 1/3</h1>
+    <nav>
+        <button id="previous-slide">Previous Slide</button>
+        <button id="next-slide">Next Slide</button>
+    </nav>
+    <h1 id="deck-count">Deck: 1/2</h1>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
