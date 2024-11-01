@@ -10,12 +10,11 @@ html, body {
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  background-color: #f4f4f9;
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  background-color: #e0f7fa; /* Changed background color */
 }
 
-header {
+header, footer {
   position: absolute;
   left: 0;
   width: 100vw;
@@ -25,73 +24,36 @@ header {
   align-items: center;
   padding: 0 5vw;
   z-index: 9;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff; 
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
+  border-bottom: 4px solid #00838f; /* Added a border for a bolder header style */
+}
+
+header {
+  top: 0;
 }
 
 header span {
   font-size: 24px; 
   font-weight: bold;
-  color: #333A3F;
-}
-
-main {
-  display: flex;
-  height: calc(100vh - 100px); 
-  width: fit-content;
-  overflow: hidden;
-  transition: transform 0.5s ease;
-}
-
-section {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; 
-  padding: 0 10vw;
-  text-align: center; 
-  background-color: #ffffff; 
-}
-
-h1 {
-  font-size: 72px;
-  color: #333A3F;
-}
-
-h2 {
-  font-size: 48px;
-  color: #555; 
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  font-size: 36px;
-  margin: 18px 0;
-  color: #333A3F;
+  color: #00838f; /* Changed header text color */
 }
 
 footer {
-  position: absolute;
   bottom: 20px; 
-  left: 0;
-  width: 100vw;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 5vw;
   background: linear-gradient(180deg, #ffffff, #f0f0f0); 
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px 5vw;
+  border-radius: 10px; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Slightly darker shadow */
 }
 
 footer h1 {
-  font-size: 24px;
-  color: #333A3F; 
+  font-size: 36px;
+  margin: 0;
+  color: #00838f; /* Changed footer text color */
+  text-align: center; 
+  flex: 1;
+  letter-spacing: 1px; 
 }
 
 footer h1:hover {
@@ -110,16 +72,107 @@ nav button {
   width: 80px; 
   height: 28px; 
   font-size: 14px;
-  background: #eaeaea; 
-  border-radius: 5px;
+  background: transparent;
+  border: none;
+  position: relative;
   color: #333A3F; 
   cursor: pointer;
+  z-index: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background-color 0.3s;
+  white-space: nowrap;
+  user-select: none;
+  touch-action: manipulation;
 }
 
-nav button:hover {
-  background-color: #d3d3d3;
+nav button::after,
+nav button::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -99999;
+  transition: all .4s;
+}
+
+nav button::before {
+  transform: translate(0%, 0%);
+  width: 100%;
+  height: 100%;
+  background: #e0f7fa; /* Changed button background color */
+  border-radius: 10px;
+}
+
+nav button::after {
+  transform: translate(5px, 5px); 
+  width: 30px; 
+  height: 30px; 
+  background: rgba(255, 255, 255, 0.25); /* Adjusted for more visibility */
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+}
+
+nav button:hover::before {
+  transform: translate(5%, 5%); 
+  width: 105%;
+  height: 105%; 
+}
+
+nav button:hover::after {
+  border-radius: 10px;
+  transform: translate(0, 0);
+  width: 100%; 
+  height: 100%;
+}
+
+nav button:active::after {
+  transition: 0s;
+  transform: translate(0, 3px);
+}
+
+main {
+  display: flex;
+  height: calc(100vh - 100px); 
+  width: fit-content;
+  overflow: hidden;
+  transition: transform 0.7s ease; /* Updated for a smoother slide effect */
+  background-color: #ffffff; 
+  border-top: 1px solid #eaeaea; 
+}
+
+section {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  padding: 0 10vw;
+  text-align: center; 
+}
+
+h1 {
+  font-size: 72px;
+  color: #00838f; /* Changed heading color */
+}
+
+h2 {
+  font-size: 48px;
+  color: #555; 
+}
+
+li {
+  font-size: 36px;
+  margin: 18px 0;
+  color: #333A3F;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+h1, h2 {
+  margin: 28px 0;
 }
