@@ -1,14 +1,11 @@
-const slides = document.querySelectorAll('main > section');
+const slides = document.querySelectorAll('.deck .slide'); // Update selector
 let currentSlide = 0;
 let currentDeck = 0;
 
 // Get unique decks by grouping slides
-const decks = Array.from(slides).reduce((acc, slide, index) => {
-    const deckIndex = Math.floor(index / 10); // Assuming 10 slides per deck
-    if (!acc[deckIndex]) acc[deckIndex] = [];
-    acc[deckIndex].push(slide);
-    return acc;
-}, []);
+const decks = Array.from(document.querySelectorAll('.deck')).map(deck => 
+    Array.from(deck.querySelectorAll('.slide'))
+);
 
 // Function to show the selected slide within the current deck
 function showSlide(index) {
@@ -47,28 +44,4 @@ function nextDeck() {
 function previousDeck() {
     if (currentDeck > 0) {
         currentDeck--;
-        currentSlide = 0; // Reset to first slide in the new deck
-        showSlide(currentSlide);
-        updateDeckCount();
-    }
-}
-
-// Update slide count display
-function updateSlideCount() {
-    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${decks[currentDeck].length}`;
-}
-
-// Update deck count display
-function updateDeckCount() {
-    document.getElementById('deck-count').textContent = `${currentDeck + 1} / ${decks.length}`;
-}
-
-// Set initial slide and deck
-showSlide(currentSlide);
-updateDeckCount();
-
-// Event listeners for navigation buttons
-document.getElementById('next-slide').addEventListener('click', nextSlide);
-document.getElementById('previous-slide').addEventListener('click', previousSlide);
-document.getElementById('next-deck').addEventListener('click', nextDeck);
-document.getElementById('previous-deck').addEventListener('click', previousDeck);
+        currentSlide = 
