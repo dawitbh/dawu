@@ -16,35 +16,27 @@ nav button {
     margin: 0 5px;
 }
 
-.deck {
+main {
     position: relative;
     height: 100vh;
     overflow: hidden;
-    display: none; /* Hide all decks initially */
 }
 
-.deck.active {
-    display: block; /* Show the active deck */
-}
-
-.slide {
+section {
     display: none;
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    display: flex; /* Ensure flex layout */
     justify-content: center;
     align-items: center;
-    text-align: center; /* Center text */
     opacity: 0;
     transition: opacity 0.5s ease;
-    padding: 20px; /* Add padding for better spacing */
 }
 
-.slide.active {
-    display: flex; /* Keep the active slide visible */
+section.active {
+    display: flex;
     opacity: 1;
 }
 
@@ -55,6 +47,4 @@ footer {
     width: 100%;
     text-align: center;
     background-color: #f0f0f0;
-    padding: 10px 0; /* Add some padding for footer */
-    font-weight: bold; /* Emphasize footer text */
 }
