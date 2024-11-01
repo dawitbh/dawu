@@ -1,9 +1,9 @@
 const slides = document.querySelectorAll('main > section');
 const totalSlides = slides.length;
-const decks = Math.ceil(totalSlides / slidesPerDeck); // Define slidesPerDeck as per your requirement
+const slidesPerDeck = 3; // Adjust as necessary for your design
+const totalDecks = Math.ceil(totalSlides / slidesPerDeck);
 let currentSlide = 0;
 let currentDeck = 0;
-const slidesPerDeck = 3; // Example: Adjust based on how many slides per deck you want
 
 function showSlide(index) {
     slides.forEach((slide, i) => {
@@ -27,17 +27,21 @@ function nextSlide() {
 function previousSlide() {
     currentSlide = (currentSlide - 1 + slidesPerDeck) % slidesPerDeck + (currentDeck * slidesPerDeck);
     if (currentSlide < 0) {
-        currentDeck = (currentDeck - 1 + decks) % decks; // Move to the previous deck
-        currentSlide = (currentDeck === decks - 1) ? totalSlides - 1 : (slidesPerDeck - 1); // Show last slide of the last deck
+        if (currentDeck > 0) {
+            currentDeck--;
+            currentSlide = Math.min((currentDeck + 1) * slidesPerDeck - 1, totalSlides - 1); // Show last slide of the previous deck
+        } else {
+            currentSlide = totalSlides - 1; // Loop to the last slide of the last deck
+        }
     }
     showSlide(currentSlide);
 }
 
 function updateSlideCount() {
     const slideCount = document.getElementById('slide-count');
-    slideCount.textContent = `${(currentSlide % slidesPerDeck) + 1} / ${slidesPerDeck}`; // Show current slide number in the deck
+    slideCount.textContent = `${(currentSlide % slidesPerDeck) + 1} / ${slidesPerDeck}`; // Current slide in the deck
     const deckCount = document.getElementById('deck-count');
-    deckCount.textContent = `${currentDeck + 1} / ${decks}`; // Show current deck number
+    deckCount.textContent = `${currentDeck + 1} / ${totalDecks}`; // Current deck number
 }
 
 // Set initial slide and deck
