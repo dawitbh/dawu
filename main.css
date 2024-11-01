@@ -1,141 +1,118 @@
-/* Universal styles */
+/* Basic reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body {
     font-family: 'Inter', sans-serif;
-    color: #bd3c3c;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9; /* Light background for better contrast */
+    padding: 20px; /* Space around the content */
 }
 
- html, body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    position: relative;
-    background-color: #b7b7b7; /* Light background */
-}
-
-header, footer {
-    position: absolute;
-    left: 0;
-    width: 100vw;
-    height: 50px;
+/* Header styles */
+header {
+    background: #007BFF; /* Primary color */
+    color: white;
+    padding: 10px 20px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 0 5vw;
-    z-index: 9;
-    background-color: #3E3A39; /* Dark background for contrast */
-    color: #c6a02b; /* Light text color */
+    justify-content: space-between; /* Space between elements */
+    border-radius: 5px; /* Rounded corners */
 }
 
- header span, footer h1, footer span {
-    color: #ffffff8d; 
-}
-
-nav {
+header nav {
     display: flex;
-    gap: 20px;
+    gap: 10px; /* Space between buttons */
 }
 
-nav button {
-    all: unset;
+header button {
+    background: white;
+    color: #007BFF;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
     cursor: pointer;
-    font-size: 20px;
-    color: #ECF0F1;
+    transition: background 0.3s, color 0.3s; /* Smooth transition */
 }
 
-nav button:hover {
-    color: #3498DB;
+header button:hover {
+    background: #0056b3; /* Darker shade on hover */
+    color: white;
 }
 
-/* Main and Section for Slide Display */
+/* Main content styles */
 main {
-    display: none; /* Only display current deck */
-    height: 100vh;
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    transition: opacity 0.5s ease, transform 0.6s ease;
+    margin-top: 20px;
 }
 
-/* Active deck styling */
-main.active {
-    display: flex; /* Only active main is shown */
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Section styling */
 section {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 0 10vw;
-    opacity: 0.9; /* Initial opacity for transition effect */
-    transition: opacity 0.5s ease;
+    margin-bottom: 20px; /* Space between sections */
+    padding: 15px; /* Padding within each section */
+    background: white; /* White background for sections */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Text Styling */
 h1 {
-    font-size: 64px;
-    color: #34495E;
+    font-size: 1.8em;
+    margin-bottom: 10px; /* Space below heading */
+    color: #007BFF; /* Primary color */
 }
 
 h2 {
-    font-size: 40px;
-    color: #2C3E50;
-}
-
-li {
-    font-size: 28px;
-    margin: 10px 0;
-    color: #7F8C8D;
+    font-size: 1.5em;
+    margin-bottom: 10px; /* Space below heading */
+    color: #0056b3; /* Darker shade for subheadings */
 }
 
 ul {
-    list-style-type: none;
+    list-style-type: disc;
+    padding-left: 20px; /* Space for bullet points */
 }
 
-/* Counter and Icon Styling */
-#slide-count, #deck-count {
-    position: absolute;
-    top: 10px;
-    font-size: 1.2rem;
-    color: #ffcc00;
-    z-index: 10;
+blockquote {
+    font-style: italic;
+    color: #555; /* Dark gray for quotes */
+    margin: 10px 0; /* Space around quotes */
+    padding-left: 15px; /* Indent quotes */
+    border-left: 3px solid #007BFF; /* Left border for quotes */
 }
 
-.icon {
-    cursor: pointer;
-    font-size: 2rem;
-    color: #ffcc00;
-    margin: 0 10px;
-    transition: color 0.3s ease;
+/* Footer styles */
+footer {
+    margin-top: 20px;
+    padding: 10px 0; /* Padding for footer */
+    text-align: center;
+    border-top: 1px solid #ddd; /* Top border */
 }
 
-.icon:hover {
-    color: #ffffff;
+footer span {
+    display: block; /* Stack footer content */
+    color: #555; /* Dark gray text */
 }
 
-/* Navigation button container styling */
-.nav-buttons {
-    position: fixed;
-    bottom: 20px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    z-index: 10;
-}
+/* Media queries for responsiveness */
+@media (max-width: 600px) {
+    header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start; /* Align to the start */
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    h1 { font-size: 48px; }
-    h2 { font-size: 32px; }
-    li { font-size: 24px; }
-    nav button { font-size: 16px; }
+    header nav {
+        margin-top: 10px; /* Space above navigation */
+        flex-direction: column; /* Stack buttons vertically */
+    }
+
+    header button {
+        width: 100%; /* Full width buttons on small screens */
+    }
+
+    section {
+        padding: 10px; /* Less padding on small screens */
+    }
 }
