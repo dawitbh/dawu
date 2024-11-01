@@ -1,10 +1,8 @@
-const decks = document.querySelectorAll('.deck');
+const slides = document.querySelectorAll('main > section');
 let currentSlide = 0;
-let currentDeck = 0;
 
-// Function to show the selected slide within the current deck
+// Function to show the selected slide
 function showSlide(index) {
-    const slides = decks[currentDeck].querySelectorAll('.slide');
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
         if (i === index) {
@@ -14,24 +12,26 @@ function showSlide(index) {
     updateSlideCount();
 }
 
-// Function to show the current deck
-function showDeck(index) {
-    decks.forEach((deck, i) => {
-        deck.classList.remove('active');
-        if (i === index) {
-            deck.classList.add('active');
-            currentSlide = 0; // Reset to first slide in the new deck
-            showSlide(currentSlide);
-        }
-    });
-    updateDeckCount();
-}
-
 // Function to go to the next slide
 function nextSlide() {
-    const slides = decks[currentDeck].querySelectorAll('.slide');
     currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
 
 // Function to go to the previous slide
+function previousSlide() {
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
+}
+
+// Update slide count display
+function updateSlideCount() {
+    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${slides.length}`;
+}
+
+// Set initial slide
+showSlide(currentSlide);
+
+// Event listeners for navigation buttons
+document.getElementById('next-slide').addEventListener('click', nextSlide);
+document.getElementById('previous-slide').addEventListener('click', previousSlide);
