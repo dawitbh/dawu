@@ -1,3 +1,4 @@
+/* Universal styles */
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +14,7 @@ html, body {
     background-color: #f0f0f0;
 }
 
+/* Header and Footer Styling */
 header, footer {
     position: absolute;
     left: 0;
@@ -24,6 +26,7 @@ header, footer {
     padding: 0 5vw;
     background-color: #2C3E50;
     color: #ECF0F1;
+    z-index: 10;
 }
 
 header span, footer h1, footer span {
@@ -39,6 +42,7 @@ footer h1 {
     margin: 0;
 }
 
+/* Navigation Styling */
 nav {
     display: flex;
     gap: 20px;
@@ -55,13 +59,24 @@ nav button:hover {
     color: #3498DB;
 }
 
+/* Main and Section for Slide Display */
 main {
-    display: flex;
+    display: none; /* Only display current deck */
     height: 100vh;
-    width: fit-content;
-    transition: transform 0.6s ease;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease, transform 0.6s ease;
 }
 
+/* Active deck styling */
+main.active {
+    display: flex; /* Only active main is shown */
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Section styling */
 section {
     height: 100vh;
     width: 100vw;
@@ -70,9 +85,11 @@ section {
     justify-content: center;
     align-items: center;
     padding: 0 10vw;
+    opacity: 0.9; /* Initial opacity for transition effect */
     transition: opacity 0.5s ease;
 }
 
+/* Text Styling */
 h1 {
     font-size: 64px;
     color: #34495E;
@@ -93,6 +110,39 @@ ul {
     list-style-type: none;
 }
 
+/* Counter and Icon Styling */
+#slide-count, #deck-count {
+    position: absolute;
+    top: 10px;
+    font-size: 1.2rem;
+    color: #ffcc00;
+    z-index: 10;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ffcc00;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+.icon:hover {
+    color: #ffffff;
+}
+
+/* Navigation button container styling */
+.nav-buttons {
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 10;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
     h1 { font-size: 48px; }
     h2 { font-size: 32px; }
