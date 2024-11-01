@@ -19,11 +19,11 @@ nav button {
 main {
     position: relative;
     height: 100vh;
-    overflow: hidden; /* Hide overflow */
+    overflow: hidden;
 }
 
 section {
-    display: none; /* Hide all sections */
+    display: none;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -32,12 +32,12 @@ section {
     justify-content: center;
     align-items: center;
     opacity: 0;
-    transition: opacity 0.5s ease; /* Fade effect */
+    transition: opacity 0.5s ease;
 }
 
 section.active {
-    display: flex; /* Show active section */
-    opacity: 1; /* Fully visible */
+    display: flex;
+    opacity: 1;
 }
 
 footer {
