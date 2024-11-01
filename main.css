@@ -19,16 +19,13 @@ nav button {
 main {
     position: relative;
     height: 100vh;
+    display: flex; /* Align sections in a row */
     overflow: hidden; /* Hide overflow */
 }
 
 section {
     display: none; /* Hide all sections */
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    flex: 1; /* Allow sections to grow */
     justify-content: center;
     align-items: center;
     opacity: 0;
