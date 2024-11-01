@@ -7,11 +7,12 @@
 }
 
 html, body {
-  width: 100vw;
+width: 100vw;
   height: 100vh;
   overflow: hidden;
   position: relative;
-  background-color: #f4f4f9;
+  background-color: #eaeaea; /* Change the overall background color */
+
 }
 
 header, footer {
@@ -30,12 +31,16 @@ header, footer {
 
 header {
   top: 0;
+  background-color: #4a90e2; /* Change header background color */
+
 }
 
 header span {
   font-size: 24px; 
   font-weight: bold;
   color: #333A3F;
+  background: linear-gradient(180deg, #4a90e2, #f0f0f0); /* Change footer background gradient */
+
 }
 
 footer {
