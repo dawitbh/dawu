@@ -1,12 +1,10 @@
 const slides = document.querySelectorAll('main > section');
-const slidesPerDeck = 2; // Show two slides at a time
 let currentSlide = 0;
 
-function showSlides(startIndex) {
+function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
-        // Show the slides in the current deck
-        if (i >= startIndex && i < startIndex + slidesPerDeck) {
+        if (i === index) {
             slide.classList.add('active');
         }
     });
@@ -14,24 +12,21 @@ function showSlides(startIndex) {
 }
 
 function nextSlide() {
-    currentSlide = (currentSlide + slidesPerDeck) % slides.length;
-    showSlides(currentSlide);
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
 }
 
 function previousSlide() {
-    currentSlide = (currentSlide - slidesPerDeck + slides.length) % slides.length;
-    showSlides(currentSlide);
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
 }
 
 function updateSlideCount() {
-    const totalSlides = slides.length;
-    const currentDeck = Math.floor(currentSlide / slidesPerDeck) + 1;
-    const totalDecks = Math.ceil(totalSlides / slidesPerDeck);
-    document.getElementById('slide-count').textContent = `${currentDeck} / ${totalDecks}`;
+    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${slides.length}`;
 }
 
-// Set initial slides
-showSlides(currentSlide);
+// Set initial slide
+showSlide(currentSlide);
 
 // Event listeners for buttons
 document.getElementById('next-slide').addEventListener('click', nextSlide);
