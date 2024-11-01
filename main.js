@@ -1,10 +1,7 @@
 const slides = document.querySelectorAll('main > section');
-const totalSlides = slides.length;
-const slidesPerDeck = 3; // Adjust as necessary for your design
-const totalDecks = Math.ceil(totalSlides / slidesPerDeck);
 let currentSlide = 0;
-let currentDeck = 0;
 
+// Function to show the selected slide
 function showSlide(index) {
     slides.forEach((slide, i) => {
         slide.classList.remove('active');
@@ -15,38 +12,26 @@ function showSlide(index) {
     updateSlideCount();
 }
 
+// Function to go to the next slide
 function nextSlide() {
-    currentSlide = (currentSlide + 1) % slidesPerDeck + (currentDeck * slidesPerDeck);
-    if (currentSlide >= totalSlides) {
-        currentSlide = 0; // Loop back to the first slide of the first deck
-        currentDeck = 0; // Reset to the first deck
-    }
+    currentSlide = (currentSlide + 1) % slides.length;
     showSlide(currentSlide);
 }
 
+// Function to go to the previous slide
 function previousSlide() {
-    currentSlide = (currentSlide - 1 + slidesPerDeck) % slidesPerDeck + (currentDeck * slidesPerDeck);
-    if (currentSlide < 0) {
-        if (currentDeck > 0) {
-            currentDeck--;
-            currentSlide = Math.min((currentDeck + 1) * slidesPerDeck - 1, totalSlides - 1); // Show last slide of the previous deck
-        } else {
-            currentSlide = totalSlides - 1; // Loop to the last slide of the last deck
-        }
-    }
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
     showSlide(currentSlide);
 }
 
+// Update slide count display
 function updateSlideCount() {
-    const slideCount = document.getElementById('slide-count');
-    slideCount.textContent = `${(currentSlide % slidesPerDeck) + 1} / ${slidesPerDeck}`; // Current slide in the deck
-    const deckCount = document.getElementById('deck-count');
-    deckCount.textContent = `${currentDeck + 1} / ${totalDecks}`; // Current deck number
+    document.getElementById('slide-count').textContent = `${currentSlide + 1} / ${slides.length}`;
 }
 
-// Set initial slide and deck
+// Set initial slide
 showSlide(currentSlide);
 
-// Event listeners for buttons
+// Event listeners for navigation buttons
 document.getElementById('next-slide').addEventListener('click', nextSlide);
 document.getElementById('previous-slide').addEventListener('click', previousSlide);
